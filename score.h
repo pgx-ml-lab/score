@@ -119,15 +119,16 @@ static const mapping_t pgs_mapping[] = {{"chr_name", HDR_CHR},
 // see http://doi.org/10.1101/2022.07.15.500230
 // and http://www.ebi.ac.uk/gwas/docs/summary-statistics-format#format
 // there is a mismatch between rsid and rs_id between the two definitions
+// the mandatory p-value column can be either p_value or neg_log_10_p_value
 // TODO support the encouraged ref_allele column
-static const mapping_t ssf_mapping[] = {{"chromosome", HDR_CHR},   {"base_pair_location", HDR_BP},
-                                        {"variant_id", HDR_SNP},   {"rsid", HDR_SNP},
-                                        {"rs_id", HDR_SNP},        {"effect_allele", HDR_A1},
-                                        {"other_allele", HDR_A2},  {"p_value", HDR_P},
-                                        {"odds_ratio", HDR_OR},    {"hazard_ratio", HDR_OR},
-                                        {"beta", HDR_BETA},        {"n", HDR_N},
-                                        {"info", HDR_INFO},        {"effect_allele_frequency", HDR_FRQ},
-                                        {"standard_error", HDR_SE}};
+static const mapping_t ssf_mapping[] = {{"chromosome", HDR_CHR},              {"base_pair_location", HDR_BP},
+                                        {"variant_id", HDR_SNP},              {"rsid", HDR_SNP},
+                                        {"rs_id", HDR_SNP},                   {"effect_allele", HDR_A1},
+                                        {"other_allele", HDR_A2},             {"p_value", HDR_P},
+                                        {"neg_log_10_p_value", HDR_LP},       {"odds_ratio", HDR_OR},
+                                        {"hazard_ratio", HDR_OR},             {"beta", HDR_BETA},
+                                        {"n", HDR_N},                         {"info", HDR_INFO},
+                                        {"effect_allele_frequency", HDR_FRQ}, {"standard_error", HDR_SE}};
 
 static inline mapping_t *mapping_preset_init(const char *preset, int *n) {
     if (strcasecmp(preset, "PLINK") == 0) {
